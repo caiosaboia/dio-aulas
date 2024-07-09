@@ -84,6 +84,16 @@ def cria_usuario(usuarios):
     print("Usuário criado !")
 
 
+def listar_contas(contas):
+    for conta in contas:
+        linha = f"""
+            Agência: {conta['agencia']}
+            C/C: {conta['numero_conta']}
+            Titular: {conta['usuario']['nome']} 
+        """
+        print("=" * 100)
+
+
 def main():
 
     LIMITE_SAQUES = 3
@@ -122,6 +132,20 @@ def main():
 
         elif escolha == "e":
             mostra_extrato(saldo, extrato=extrato)
+
+        elif escolha == "nu":
+            cria_usuario(usuarios)
+
+        elif escolha == "nc":
+            numero_conta = len(contas) + 1
+            conta = cria_usuario(AGENCIA, numero_conta, usuarios)
+
+            if conta:
+                contas.append(conta)
+
+        elif escolha == "lc":
+            listar_contas(contas)
+
         elif escolha == "q":
             print("Até Logo!")
             break
